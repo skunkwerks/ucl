@@ -1,15 +1,13 @@
 {application, ucl,
- [{description, "An OTP application"},
-  {vsn, "0.1.0"},
+ [{description, "BEAM-powered Erlang and Elixir UCL parser"},
+  {vsn, git},
   {registered, []},
-  {mod, {ucl_app, []}},
   {applications,
    [kernel,
     stdlib
    ]},
   {env,[]},
   {modules, []},
-
-  {licenses, ["Apache 2.0"]},
+  {licenses, ["BSD 2-Clause"]},
   {links, []}
  ]}.
