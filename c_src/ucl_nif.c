@@ -22,7 +22,7 @@ to_json(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
 
     ERL_NIF_TERM ok = enif_make_atom(env, "ok");
     buf = enif_make_new_binary(env, binary.size, &ret);
-    memcpy(buf, binary.data, binary.size);
+    bzero(buf, binary.size);
 
     return enif_make_tuple2(env, ok, ret);
 }
