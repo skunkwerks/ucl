@@ -16,7 +16,7 @@ to_json(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
     struct ucl_parser *parser = NULL;
 
     ucl_object_t *ucl = NULL;
-    /* ucl_emitter_t emitter = UCL_EMIT_JSON; */
+    ucl_emitter_t emitter = UCL_EMIT_JSON;
 
     if (!enif_is_binary(env, argv[0])) {
         ERL_NIF_TERM error = enif_make_atom(env, "error");
@@ -55,10 +55,15 @@ to_json(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
         ucl_object_unref (ucl);
     }
 
-    // return parsed JSON
+    // turn it into JSON
+    size_t len;
+    unsigned char *blob;
+    blob = ucl_object_emit_len(ucl, emitter, &len);
+
+    // return JSON as binary
     ERL_NIF_TERM ok = enif_make_atom(env, "ok");
-    buf = enif_make_new_binary(env, binary.size, &json);
-    bzero(buf, binary.size);
+    buf = enif_make_new_binary(env, len, &json);
+    memcpy(buf, blob, len);
 
     return enif_make_tuple2(env, ok, json);
 }
