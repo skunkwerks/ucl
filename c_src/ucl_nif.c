@@ -1,7 +1,13 @@
 #include <stdint.h>
 #include <strings.h>
 #include <stdlib.h>
+
+#if defined(__linux__)
+#include <malloc.h>
+#elif defined(BSD)
 #include <malloc_np.h>
+#endif
+
 #include "erl_nif.h"
 #include "ucl.h"
 
