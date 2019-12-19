@@ -72,10 +72,43 @@ to_json(ErlNifEnv *env, int argc, const ERL_NIF_TERM argv[])
     memcpy(buf, blob, len);
 
     return enif_make_tuple2(env, ok, json);
+
+// Public Domain code from https://github.com/davisp/nif-examples
+// There are three functions that may be called during the lifetime
+// of a NIF. load, upgrade, and unload. Any of these functions
+// can be left unspecified by passing NULL to the ERL_NIF_INIT macro.
+//
+// reload is no longer supported since OTP20
+//
+// NIFs are awesome.
+
+// Return value of 0 indicates success.
+// Docs: http://erlang.org/doc/man/erl_nif.html#load
+
+static int load(ErlNifEnv *env, void **priv, ERL_NIF_TERM load_info) {
+  return 0;
 }
 
-static ErlNifFunc nif_funcs[] = {
-    {"to_json", 1, to_json}
-};
+// Called when changing versions of the C code for a module's NIF
+// implementation if I read the docs correctly.
+//
+// Return value of 0 indicates success.
+// Docs: http://erlang.org/doc/man/erl_nif.html#upgrade
 
-ERL_NIF_INIT(ucl, nif_funcs, NULL, NULL, NULL, NULL)
+static int upgrade(ErlNifEnv *env, void **priv, void **old_priv,
+                   ERL_NIF_TERM load_info) {
+  return 0;
+}
+
+// Called when the library is unloaded. Not called after a reload
+// executes.
+//
+// No return value
+// Docs: http://erlang.org/doc/man/erl_nif.html#load
+
+static void unload(ErlNifEnv *env, void *priv) { return; }
+
+// initialise NIF library
+// support load, reload, upgrade, unload
+
+ERL_NIF_INIT(ucl, nif_funcs, &load, NULL, &upgrade, &unload);
