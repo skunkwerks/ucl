@@ -88,7 +88,27 @@ get in touch.
 Tests are available as usual via `rebar3 ct`, and long-running property
 tests via `rebar3 proper`. The property tests are effectively fuzzing
 the NIF by injecting random `binary()` data and expecting it to return
-a classic `{ok | error, any()}` tuple.
+a classic `{ok | error, any()}` tuple, and take a considerable amount of
+time (several hours):
+
+```
+$ time rebar3 proper
+... 3 hours later ...
+00% {60000,66000}
+10% {54000,60000}
+09% {48000,54000}
+10% {42000,48000}
+10% {36000,42000}
+09% {30000,36000}
+09% {24000,30000}
+09% {18000,24000}
+09% {12000,18000}
+10% {6000,12000}
+9% {0,6000}
+===> 1/1 properties passed
+OK: Passed 500000 test(s).
+11005.99 real     11039.08 user        86.36 sys
+```
 
 Although `UCL` is written in Erlang, and uses `rebar3` ,it should
 compile cleanly as a dependency on any BEAM language.
