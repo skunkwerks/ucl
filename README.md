@@ -85,7 +85,10 @@ Compilation should work on all UNIX-like OS out of the box. There is
 o Windows support planned, but if you can compile `libucl` on Windows,
 get in touch.
 
-Tests are available as usual via `rebar3 ct`.
+Tests are available as usual via `rebar3 ct`, and long-running property
+tests via `rebar3 proper`. The property tests are effectively fuzzing
+the NIF by injecting random `binary()` data and expecting it to return
+a classic `{ok | error, any()}` tuple.
 
 Although `UCL` is written in Erlang, and uses `rebar3` ,it should
 compile cleanly as a dependency on any BEAM language.
