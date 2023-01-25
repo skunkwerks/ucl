@@ -12,4 +12,6 @@ c_src/*.o
 ebin/
 
 priv/*_nif.*
+priv/*_drv.*
+
 _build/
