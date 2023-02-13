@@ -79,7 +79,7 @@ static ERL_NIF_TERM to_json(ErlNifEnv *env, int argc,
   return enif_make_tuple2(env, ok, json);
 }
 
-static ErlNifFunc nif_funcs[] = {{"to_json", 1, to_json}};
+static ErlNifFunc nif_funcs[] = {{"to_json", 1, to_json, ERL_NIF_DIRTY_JOB_CPU_BOUND}};
 
 // Public Domain code from https://github.com/davisp/nif-examples
 // There are three functions that may be called during the lifetime

@@ -13,3 +13,4 @@ ebin/
 
 priv/*_nif.*
 _build/
+/doc/

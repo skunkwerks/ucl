@@ -13,9 +13,10 @@ are:
 `UCL` is a NIF-based binding to the reference implementation [LibUCL],
 and currently requires that library to be pre-installed on your system.
 
-It does not use dirty schedulers, nor does it time-slice NIF calls, as
-this would make the code significantly more complex for a function that
-is unlikely to be run frequently within the BEAM.
+Version 1.0 onwards uses dirty schedulers, but does not yield nor
+time-slice NIF calls, as this would make the code significantly more
+complex for a function that is unlikely to be run frequently within the
+BEAM.
 
 UCL comes with friendly functions for *both* Elixir and Erlang, we are
 all friends here.
@@ -71,15 +72,15 @@ $ sudo make install
 Via git clone:
 
 ```
-$ export PATH=$PATH:/usr/local/lib/erlang21/bin:$HOME/.mix
+$ export PATH=$PATH:/usr/local/lib/erlang25/bin:$HOME/.mix
 $ mix local.rebar
-$ rebar3 do clean, compile, ct
+$ rebar3 do clean, compile, ct, ex_doc
 ```
 
 Via [hex] in the usual fashion:
 
-- Elixir: add `{:ucl, "~> 0.1"}` to `mix.exs`
-- Erlang: add `{ucl, "0.1.1"}` to `rebar.config`
+- Elixir: add `{:ucl, "~> 1.0"}` to `mix.exs`
+- Erlang: add `{ucl, "1.0.0"}` to `rebar.config`
 
 Compilation should work on all UNIX-like OS out of the box. There is
 o Windows support planned, but if you can compile `libucl` on Windows,
