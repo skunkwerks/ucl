@@ -9,5 +9,6 @@
   {env,[]},
   {modules, []},
   {licenses, ["BSD 2-Clause"]},
-  {links, []}
- ]}.
+  {links, [{"git", "https://git.sr.ht/~dch/ucl"},
+           {"github", "https://github.com/skunkwerks/ucl"}
+          ]}]}.

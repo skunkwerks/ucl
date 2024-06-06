@@ -27,12 +27,15 @@ all friends here.
 `libucl` is obviously a dependency, and the usual UNIX build chain is
 required.
 
+You will need Erlang/OTP 25 or higher, because the build tool `enc`
+is a pre-compiled escript.
+
 - FreeBSD:  `textproc/libucl devel/rebar3`
 - OSX:      `brew install libucl`
 - Debian:   `build-essential` from base
             `erlang-dev erlang-nox` from erlang-solutions
             `rebar3` from https://rebar3.org/
-- OpenBSD:  `erlang-21 elixir` from base
+- OpenBSD:  `erlang-25 elixir` from base
             `rebar3` from https://rebar3.org/
 
 On some systems, LibUCL is missing and you'll need to build it.
@@ -71,15 +74,15 @@ $ sudo make install
 Via git clone:
 
 ```
-$ export PATH=$PATH:/usr/local/lib/erlang21/bin:$HOME/.mix
+$ export PATH=$PATH:/usr/local/lib/erlang25/bin:$HOME/.mix
 $ mix local.rebar
 $ rebar3 do clean, compile, ct
 ```
 
 Via [hex] in the usual fashion:
 
-- Elixir: add `{:ucl, "~> 0.1"}` to `mix.exs`
-- Erlang: add `{ucl, "0.1.1"}` to `rebar.config`
+- Elixir: add `{:ucl, "~> 1.0"}` to `mix.exs`
+- Erlang: add `{ucl, "1.1.0"}` to `rebar.config`
 
 Compilation should work on all UNIX-like OS out of the box. There is
 o Windows support planned, but if you can compile `libucl` on Windows,
