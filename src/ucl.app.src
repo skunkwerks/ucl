@@ -9,6 +9,7 @@
   {env,[]},
   {modules, []},
   {licenses, ["BSD 2-Clause"]},
+  {include_paths, ["enc"]},
   {links, [{"git", "https://git.sr.ht/~dch/ucl"},
            {"github", "https://github.com/skunkwerks/ucl"}
           ]}]}.
