@@ -1,1 +1,7 @@
-[].
+[{<<"libucl">>,
+  {external,{http,"https://github.com/vstakhov/libucl/archive/refs/tags/0.9.2.tar.gz",
+                  {md5,"e6a2111172b8fb9f069481c63b732293"}},
+            [],
+            [{description,"Universal configuration language parser"},
+             {vsn,"0.9.2"}]},
+  0}].

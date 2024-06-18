@@ -12,6 +12,6 @@ c_src/*.o
 ebin/
 
 priv/*_nif.*
-priv/*_drv.*
+priv/libucl.so*
 
 _build/
