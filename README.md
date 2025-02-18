@@ -20,6 +20,11 @@ is unlikely to be run frequently within the BEAM.
 UCL comes with friendly functions for *both* Elixir and Erlang, we are
 all friends here.
 
+## ChangeLog
+
+- `1.1.2` minor documentation improvements
+- `1.1.1` update for OTP25+, publish to hex
+
 ## Installation & Compilation
 
 ### Dependencies
@@ -28,9 +33,9 @@ all friends here.
 required.
 
 You will need Erlang/OTP 25 or higher, because the build tool `enc`
-is a pre-compiled escript.
+is a pre-compiled escript, and Elixir if you wish to test that too.
 
-- FreeBSD:  `textproc/libucl devel/rebar3`
+- FreeBSD:  `textproc/libucl devel/rebar3 lang/elixir`
 - OSX:      `brew install libucl`
 - Debian:   `build-essential` from base
             `erlang-dev erlang-nox` from erlang-solutions
@@ -74,8 +79,7 @@ $ sudo make install
 Via git clone:
 
 ```
-$ export PATH=$PATH:/usr/local/lib/erlang25/bin:$HOME/.mix
-$ mix local.rebar
+$ mix local.rebar --force --if-missing rebar3 /usr/local/bin/rebar3
 $ rebar3 do clean, compile, ct
 ```
 
@@ -85,7 +89,7 @@ Via [hex] in the usual fashion:
 - Erlang: add `{ucl, "1.1.0"}` to `rebar.config`
 
 Compilation should work on all UNIX-like OS out of the box. There is
-o Windows support planned, but if you can compile `libucl` on Windows,
+no Windows support planned, but if you can compile `libucl` on Windows,
 get in touch.
 
 Tests are available as usual via `rebar3 ct`, and long-running property
